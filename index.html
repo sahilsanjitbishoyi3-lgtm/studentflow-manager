@@ -1,0 +1,182 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div>
+        <h2>Student<span>Flow</span></h2>
+        <small>MANAGEMENT SYSTEM</small>
+      </div>
+    </div>
+
+    <div class="nav-label">WORKSPACE</div>
+    <nav>
+      <a class="nav-link active" href="#dashboard"><i class="fa-solid fa-grid-2"></i> Dashboard</a>
+      <a class="nav-link" href="#students"><i class="fa-solid fa-users"></i> All Students</a>
+      <a class="nav-link" href="#students"><i class="fa-solid fa-user-plus"></i> Enrollment</a>
+    </nav>
+
+    <div class="nav-label">MANAGEMENT</div>
+    <nav>
+      <a class="nav-link" href="#students"><i class="fa-solid fa-book-open"></i> Courses</a>
+      <a class="nav-link" href="#students"><i class="fa-solid fa-chart-pie"></i> Reports</a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="help-card">
+        <div class="help-icon"><i class="fa-solid fa-headset"></i></div>
+        <h4>Need a hand?</h4>
+        <p>Manage your students with ease.</p>
+      </div>
+      <div class="profile">
+        <div class="profile-avatar">SA</div>
+        <div class="profile-info">
+          <strong>System Admin</strong>
+          <small>Administrator</small>
+        </div>
+        <i class="fa-solid fa-ellipsis"></i>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <div class="breadcrumb">Workspace <i class="fa-solid fa-chevron-right"></i> Dashboard</div>
+        <h1>Dashboard Overview</h1>
+        <p class="subtitle">Here's what's happening with your students today.</p>
+      </div>
+      <div class="top-actions">
+        <div class="date-chip"><i class="fa-regular fa-calendar"></i> <span id="todayDate">Today</span></div>
+        <button class="icon-btn" title="Notifications"><i class="fa-regular fa-bell"></i><span class="notification-dot"></span></button>
+        <div class="top-avatar">SA</div>
+      </div>
+    </header>
+
+    <section class="welcome-banner">
+      <div class="welcome-content">
+        <span class="eyebrow"><i class="fa-solid fa-sparkles"></i> YOUR LEARNING COMMUNITY</span>
+        <h2>Make every student<br>count<span>.</span></h2>
+        <p>One place to organize, track and grow your student community.</p>
+        <button class="banner-btn" id="bannerAdd"><i class="fa-solid fa-plus"></i> Add New Student</button>
+      </div>
+      <div class="banner-art">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="banner-cap"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div class="float-card float-card-one"><i class="fa-solid fa-star"></i> Keep growing!</div>
+        <div class="float-card float-card-two"><i class="fa-solid fa-chart-line"></i> Track progress</div>
+      </div>
+    </section>
+
+    <section class="stats-grid">
+      <article class="stat-card">
+        <div class="stat-top"><span>Total Students</span><div class="stat-icon purple"><i class="fa-solid fa-users"></i></div></div>
+        <div class="stat-number" id="totalStudents">0</div>
+        <div class="stat-foot"><span class="stat-note">Student records</span><span class="trend"><i class="fa-solid fa-arrow-up"></i> Live</span></div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-top"><span>Active Students</span><div class="stat-icon green"><i class="fa-solid fa-user-check"></i></div></div>
+        <div class="stat-number" id="activeStudents">0</div>
+        <div class="stat-foot"><span class="stat-note">Currently enrolled</span><span class="trend">Active</span></div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-top"><span>Inactive Students</span><div class="stat-icon orange"><i class="fa-solid fa-user-clock"></i></div></div>
+        <div class="stat-number" id="inactiveStudents">0</div>
+        <div class="stat-foot"><span class="stat-note">Not currently active</span><span class="trend neutral">Review</span></div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-top"><span>Courses</span><div class="stat-icon blue"><i class="fa-solid fa-book-open"></i></div></div>
+        <div class="stat-number" id="totalCourses">0</div>
+        <div class="stat-foot"><span class="stat-note">Unique courses</span><span class="trend">Available</span></div>
+      </article>
+    </section>
+
+    <section class="content-card" id="students">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">STUDENT DIRECTORY</span>
+          <h2>All Students <span class="count-pill" id="studentCount">0</span></h2>
+          <p>Manage and organize your student records.</p>
+        </div>
+        <button class="primary-btn" id="addStudentBtn"><i class="fa-solid fa-plus"></i> Add Student</button>
+      </div>
+
+      <div class="toolbar">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Search by name, email or course...">
+        </div>
+        <select id="statusFilter">
+          <option value="All">All Status</option>
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+        <select id="courseFilter">
+          <option value="All">All Courses</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>STUDENT</th>
+              <th>STUDENT ID</th>
+              <th>COURSE</th>
+              <th>JOIN DATE</th>
+              <th>STATUS</th>
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody id="studentTable"></tbody>
+        </table>
+        <div class="empty-state" id="emptyState">
+          <div class="empty-icon"><i class="fa-solid fa-user-group"></i></div>
+          <h3>No students found</h3>
+          <p>Add a student or change your search filters.</p>
+        </div>
+      </div>
+      <div class="table-footer">
+        <span id="showingText">Showing 0 students</span>
+        <span class="footer-label"><i class="fa-solid fa-shield-halved"></i> StudentFlow Workspace</span>
+      </div>
+    </section>
+
+    <footer>© 2026 StudentFlow. Built for better student management. <span>Made with <i class="fa-solid fa-heart"></i></span></footer>
+  </main>
+</div>
+
+<div class="modal-overlay" id="studentModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div><span class="section-kicker">STUDENT INFORMATION</span><h2 id="modalTitle">Add New Student</h2></div>
+      <button class="close-btn" id="closeModal"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <form id="studentForm">
+      <input type="hidden" id="editIndex">
+      <label>Full Name</label>
+      <input id="studentName" type="text" placeholder="Enter student name" required>
+      <label>Email Address</label>
+      <input id="studentEmail" type="email" placeholder="student@example.com" required>
+      <div class="form-row">
+        <div><label>Student ID</label><input id="studentId" type="text" placeholder="STU001" required></div>
+        <div><label>Course</label><input id="studentCourse" type="text" placeholder="e.g. Computer Science" required></div>
+      </div>
+      <div class="form-row">
+        <div><label>Join Date</label><input id="studentDate" type="date" required></div>
+        <div><label>Status</label><select id="studentStatus"><option>Active</option><option>Inactive</option></select></div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="cancel-btn" id="cancelModal">Cancel</button>
+        <button type="submit" class="primary-btn"><i class="fa-solid fa-check"></i> Save Student</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMessage">Success!</span></div>
